@@ -1,20 +1,25 @@
-import { p } from "@antfu/utils";
-import { readdir, writeFile } from "fs/promises"
-import { resolve, basename } from "path"
-import pkg from "../package.json"
+import {p} from "@antfu/utils";
+import {existsSync as exists} from "fs";
+import {mkdir, readdir, writeFile} from "fs/promises";
+import {basename, resolve} from "path";
+import pkg from "../package.json";
+
 const debug: boolean = true // (process?.env?.NODE_ENV === 'development')
 const { time, timeLog, timeEnd } = console
+
 async function main(): Promise<void> {
   debug && time('build')
   const newPkg: Record<string, any> = Object.assign({}, pkg)
   const bin: Record<string, string> = {}
   let binContent: string, binAbsPath: string
-  
+  const binDir = resolve(__dirname, '../bin')
+  if (!exists(binDir)) await mkdir(binDir, { recursive: true })
+
   const files = p<string>(await readdir(resolve(__dirname, '../src/cmd')), { concurrency: 5 })
   await files.filter((file: string) => /\.ts$/ig.test(file))
     .map<Promise<any>>(async (file: string): Promise<any> => {
       const cmd = basename(file, '.ts')
-      
+
       // ./bin/{cmd}.js
       bin[cmd] = `bin/${cmd}.js`
       binAbsPath = resolve(__dirname, '../', bin[cmd])
@@ -43,7 +48,7 @@ async function main(): Promise<void> {
       // return file paths Object
       return ({ bin: bin[cmd], ...exports })
     })
-    .finally(async () => {
+    .then(async () => {
       const newPkgJson = JSON.stringify(newPkg, null, 2)
       await writeFile(resolve(__dirname, '../package.json'), newPkgJson, 'utf8')
       if (debug) {
