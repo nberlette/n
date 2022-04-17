@@ -1,8 +1,9 @@
-import { version } from '../package.json'
-import type { Agent, Command } from './agents'
-import { AGENTS } from './agents'
-import { exclude } from './utils'
-import type { Runner } from './runner'
+import pkg from '../package.json'
+import type { Agent, Command } from '~/agents'
+import { AGENTS } from '~/agents'
+import { exclude } from '~/utils'
+import type { Runner, RunnerContext } from '~/runner'
+const { name, version } = pkg;
 
 export function getCommand(
   agent: Agent,
@@ -22,10 +23,10 @@ export function getCommand(
   return c.replace('{0}', args.join(' ')).trim()
 }
 
-export const parseNi = <Runner>((agent, args, ctx) => {
+export const parseNi = <Runner>((agent: Agent, args: any[], ctx: RunnerContext) => {
   if (args.length === 1 && args[0] === '-v') {
     // eslint-disable-next-line no-console
-    console.log(`@antfu/ni v${version}`)
+    console.log(`${pkg.name} v${pkg.version}`)
     process.exit(0)
   }
 
@@ -76,4 +77,40 @@ export const parseNun = <Runner>((agent, args) => {
 
 export const parseNx = <Runner>((agent, args) => {
   return getCommand(agent, 'execute', args)
+})
+
+export const parseNo = <Runner>((agent, args) => {
+  return getCommand(agent, 'outdated', args)
+})
+
+export const parseNp = <Runner>((agent, args) => {
+  return getCommand(agent, 'publish', args)
+})
+
+export const parseNh = <Runner>((agent, args) => {
+  return getCommand(agent, 'help', args)
+})
+
+export const parseNv = <Runner>((agent, args) => {
+  return getCommand(agent, 'version', args)
+})
+
+export const parseNl = <Runner>((agent, args) => {
+  return getCommand(agent, 'list', args)
+})
+
+export const parseNt = <Runner>((agent, args) => {
+  return getCommand(agent, 'test', args)
+})
+
+export const parseNd = <Runner>((agent, args) => {
+  return getCommand(agent, 'diff', args)
+})
+
+export const parseNa = <Runner>((agent, args) => {
+  return getCommand(agent, 'audit', args)
+})
+
+export const parseNb = <Runner>((agent, args) => {
+  return getCommand(agent, 'bin', args)
 })

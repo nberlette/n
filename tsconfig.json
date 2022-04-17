@@ -7,6 +7,20 @@
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "~": ["./src/index.ts"],
+      "@": ["./src/index.ts"],
+      "~/*": ["./src/*.ts"],
+      "@/*": ["./src/*.ts"]
+    },
+    "rootDir": ".",
+    "rootDirs": ["src", "src/cmd", "test"],
+    "outDir": "dist"
+  },
+  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx"],
+  "exclude": ["dist", "node_modules", "bin"]
 }
