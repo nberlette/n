@@ -1,6 +1,6 @@
 {
   "name": "@brlt/n",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "author": "Nicholas Berlette <nick@berlette.com>",
   "contributors": [
@@ -195,7 +195,23 @@
     }
   },
   "bin": {
-    "na": "bin/na.js"
+    "na": "bin/na.js",
+    "fs": "bin/fs.js",
+    "nd": "bin/nd.js",
+    "nex": "bin/nex.js",
+    "nci": "bin/nci.js",
+    "nl": "bin/nl.js",
+    "ni": "bin/ni.js",
+    "nls": "bin/nls.js",
+    "np": "bin/np.js",
+    "no": "bin/no.js",
+    "nr": "bin/nr.js",
+    "nt": "bin/nt.js",
+    "nv": "bin/nv.js",
+    "nu": "bin/nu.js",
+    "nb": "bin/nb.js",
+    "nh": "bin/nh.js",
+    "nun": "bin/nun.js"
   },
   "tsup": {
     "entry": [
