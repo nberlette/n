@@ -16,8 +16,9 @@ async function main(): Promise<void> {
   const binDir = resolve(__dirname, '../bin')
   if (!exists(binDir)) await mkdir(binDir, { recursive: true })
 
-  const files = p<string>(await readdir(resolve(__dirname, '../src/cmd')), { concurrency: 5 })
-  await files.filter((file: string) => /\.ts$/ig.test(file))
+  const files = p<string>(await readdir(resolve(__dirname, '../src')), { concurrency: 5 })
+
+  await files.filter(f => !f.endsWith('.d.ts') && f.endsWith('.ts') && f.replace('.ts', '').length < 4)
     .map<Promise<any>>(async (file: string): Promise<any> => {
       const cmd = basename(file, '.ts')
 
@@ -29,6 +30,7 @@ async function main(): Promise<void> {
       debug && timeLog('build', `${binContent.length}B -> ./${bin[cmd]}`)
 
       // pkg.bin
+      newPkg.bin = {}
       newPkg.bin[cmd] = bin[cmd]
       debug && timeLog('build', `${cmd} ~> pkg.bin`)
 
@@ -62,5 +64,6 @@ async function main(): Promise<void> {
         timeEnd('build')
       }
     })
+
 }
 main()
