@@ -62,7 +62,7 @@
     "prepublishOnly": "pnpm clean && pnpm build",
     "watch": "pnpm build -- --watch",
     "build": "tsup",
-    "release": "pnpx bumpp --commit '📦 v%s' --push --tag && pnpm publish",
+    "release": "pnpx bumpp --commit '📦 v%s' --push --tag && pnpm publish --no-git-checks",
     "lint": "eslint --ignore-path=.gitignore \"**/*.ts\"",
     "lint:fix": "pnpm lint -- --fix",
     "format:base": "prettier --ignore-path=.gitignore --plugin-search-dir=. '**/*.ts'",
