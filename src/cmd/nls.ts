@@ -1,4 +1,4 @@
-import { parseNls } from '~/commands'
+import { parseNl } from '~/commands'
 import { runCli } from '~/runner'
 
-runCli(parseNls)
+runCli(parseNl)

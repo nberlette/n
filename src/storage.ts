@@ -1,4 +1,5 @@
-import { existsSync, promises as fs } from 'fs'
+
+import { existsSync, readJsonSync, writeJson } from 'fs-extra'
 import { join } from 'path'
 
 export interface Storage {
@@ -10,21 +11,13 @@ let storage: Storage | undefined
 const storagePath = join(__dirname, '_storage.json')
 
 export async function load(fn?: (storage: Storage) => Promise<boolean> | boolean) {
-  if (!storage) {
-    storage = existsSync(storagePath)
-      ? JSON.parse(await fs.readFile(storagePath, 'utf-8')) || {}
-      : {}
-  }
+  if (!storage && existsSync(storagePath))
+    storage = await readJsonSync(storagePath).catch(() => ({})) || {}
 
-  if (fn) {
-    if (await fn(storage!))
+  if (fn && (await fn(storage!)))
       await dump()
-  }
 
   return storage!
 }
 
-export async function dump() {
-  if (storage)
-    await fs.writeFile(storagePath, JSON.stringify(storage), 'utf-8')
-}
+export const dump = async (): Promise<void> => storage && (await writeJson(storagePath, storage))

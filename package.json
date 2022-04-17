@@ -21,6 +21,7 @@
     "npm",
     "cli"
   ],
+  "packageManager": "pnpm@6.23.8",
   "publishConfig": {
     "access": "public"
   },
@@ -38,32 +39,38 @@
       "require": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./package.json": "./package.json",
-    "./dist/index.d.ts": "./dist/index.d.ts",
-    "./*": "./dist/*"
+    "./package.json": "./package.json"
   },
-  "bin": {
-    "ni": "bin/ni.js",
-    "nci": "bin/nci.js",
-    "nr": "bin/nr.js",
-    "nu": "bin/nu.js",
-    "no": "bin/no.js",
-    "nm": "bin/nm.js",
-    "nv": "bin/nv.js",
-    "nd": "bin/nd.js",
-    "nh": "bin/nh.js",
-    "na": "bin/na.js",
-    "nl": "bin/nl.js",
-    "nls": "bin/nls.js",
-    "nt": "bin/nt.js",
-    "np": "bin/np.js",
-    "nb": "bin/nb.js",
-    "nex": "bin/nex.js",
-    "nun": "bin/nun.js"
+  "tsup": {
+    "entry": [
+      "./src/index.ts",
+      "./src/cmd/*.ts"
+    ],
+    "platform": "node",
+    "outDir": "dist",
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "onSuccess": "esno scripts/postbuild.ts",
+    "dts": true,
+    "sourcemap": true,
+    "minify": true,
+    "clean": true
   },
   "scripts": {
-    "prepublishOnly": "pnpm clean && npm run build",
+    "prepublishOnly": "pnpm clean && pnpm build",
     "watch": "pnpm build -- --watch",
+    "build": "tsup",
+    "release": "pnpx bumpp --commit '📦 v%s' --push --tag",
+    "lint": "eslint --ignore-path=.gitignore \"**/*.ts\"",
+    "lint:fix": "pnpm lint -- --fix",
+    "format:base": "prettier --ignore-path=.gitignore --plugin-search-dir=. '**/*.ts'",
+    "format:check": "pnpm format:base --check",
+    "format": "pnpm format:base --write",
+    "test": "vitest",
+    "clean": "rimraf dist",
+    "clean:all": "rimraf dist bin node_modules",
     "?ni": "pnpm install",
     "ni": "esno src/cmd/ni.ts",
     "nci": "esno src/cmd/nci.ts",
@@ -82,16 +89,7 @@
     "nls": "esno src/cmd/nls.ts",
     "nt": "esno src/cmd/nt.ts",
     "np": "esno src/cmd/np.ts",
-    "nb": "esno src/cmd/nb.ts",
-    "build": "pnpm clean && tsup src/cmd/*.ts src/index.ts --format cjs,esm --dts",
-    "release": "pnpx bumpp --commit --push --tag",
-    "lint": "eslint \"**/*.ts\"",
-    "lint:fix": "pnpm lint -- --fix",
-    "format:check": "prettier --ignore-path=.gitignore --plugin-search-dir=. --check '**/*.ts'",
-    "format": "pnpm format:check -- --write",
-    "clean": "rimraf dist",
-    "clean:all": "rimraf dist bin node_modules",
-    "test": "vitest"
+    "nb": "esno src/cmd/nb.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.20.3",
@@ -105,6 +103,8 @@
     "esno": "^0.14.1",
     "execa": "^6.1.0",
     "find-up": "^6.3.0",
+    "fs-extra": "^10.1.0",
+    "fsxx": "^0.0.5",
     "ini": "^3.0.0",
     "pnpm": "^6.32.8",
     "prompts": "^2.4.2",

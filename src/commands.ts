@@ -1,12 +1,13 @@
-import pkg from '../package.json'
 import type { Agent, Command } from '~/agents'
 import { AGENTS } from '~/agents'
-import { exclude } from '~/utils'
 import type { Runner, RunnerContext } from '~/runner'
-const { name, version } = pkg;
+import { exclude } from '~/utils'
+import pkg from '../package.json'
+const { name, version } = pkg
+type Agents = Exclude<Agent, 'prompt'>
 
 export function getCommand(
-  agent: Agent,
+  agent: Agents,
   command: Command,
   args: string[] = [],
 ) {
@@ -23,7 +24,7 @@ export function getCommand(
   return c.replace('{0}', args.join(' ')).trim()
 }
 
-export const parseNi = <Runner>((agent: Agent, args: any[], ctx: RunnerContext) => {
+export const parseNi = <Runner>((agent: Agents, args: any[], ctx: RunnerContext) => {
   if (args.length === 1 && args[0] === '-v') {
     // eslint-disable-next-line no-console
     console.log(`${pkg.name} v${pkg.version}`)
@@ -50,7 +51,7 @@ export const parseNi = <Runner>((agent: Agent, args: any[], ctx: RunnerContext) 
   return getCommand(agent, 'add', args)
 })
 
-export const parseNr = <Runner>((agent, args) => {
+export const parseNr = <Runner>((agent: Agents, args: any[]) => {
   if (args.length === 0)
     args.push('start')
 
@@ -62,55 +63,55 @@ export const parseNr = <Runner>((agent, args) => {
   return getCommand(agent, 'run', args)
 })
 
-export const parseNu = <Runner>((agent, args) => {
+export const parseNu = <Runner>((agent: Agents, args: any[]) => {
   if (args.includes('-i'))
     return getCommand(agent, 'upgrade-interactive', exclude(args, '-i'))
 
   return getCommand(agent, 'upgrade', args)
 })
 
-export const parseNun = <Runner>((agent, args) => {
+export const parseNun = <Runner>((agent: Agents, args: any[]) => {
   if (args.includes('-g'))
     return getCommand(agent, 'global_uninstall', exclude(args, '-g'))
   return getCommand(agent, 'uninstall', args)
 })
 
-export const parseNx = <Runner>((agent, args) => {
+export const parseNx = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'execute', args)
 })
 
-export const parseNo = <Runner>((agent, args) => {
+export const parseNo = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'outdated', args)
 })
 
-export const parseNp = <Runner>((agent, args) => {
+export const parseNp = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'publish', args)
 })
 
-export const parseNh = <Runner>((agent, args) => {
+export const parseNh = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'help', args)
 })
 
-export const parseNv = <Runner>((agent, args) => {
+export const parseNv = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'version', args)
 })
 
-export const parseNl = <Runner>((agent, args) => {
+export const parseNl = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'list', args)
 })
 
-export const parseNt = <Runner>((agent, args) => {
+export const parseNt = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'test', args)
 })
 
-export const parseNd = <Runner>((agent, args) => {
+export const parseNd = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'diff', args)
 })
 
-export const parseNa = <Runner>((agent, args) => {
+export const parseNa = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'audit', args)
 })
 
-export const parseNb = <Runner>((agent, args) => {
+export const parseNb = <Runner>((agent: Agents, args: any[]) => {
   return getCommand(agent, 'bin', args)
 })

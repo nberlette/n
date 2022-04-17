@@ -1,8 +1,5 @@
-const npmRun = (agent: string) => (args: string[]) => {
-  if (args.length > 1)
-    return `${agent} run ${args[0]} -- ${args.slice(1).join(' ')}`
-  else return `${agent} run ${args[0]}`
-}
+const npmRun = (agent: string) => (args: string[]) =>
+  (args.length > 1) ? `${agent} run ${args[0]} -- ${args.slice(1).join(' ')}` : `${agent} run ${args[0]}`;
 
 export const AGENTS = {
   'npm': {
@@ -112,7 +109,7 @@ export const AGENTS = {
   },
 }
 
-export type Agent = keyof typeof AGENTS
+export type Agent = (keyof typeof AGENTS) | 'prompt'
 export type Command = keyof typeof AGENTS.npm
 
 export const agents = Object.keys(AGENTS) as Agent[]
@@ -123,9 +120,12 @@ export const LOCKS: Record<string, Agent> = {
   'package-lock.json': 'npm',
 }
 
+export const LOCKS_PATTERN: RegExp = new RegExp(`^(${Object.values(LOCKS).join('|')})@(\d).*?$`)
+
 export const INSTALL_PAGE: Record<Agent, string> = {
-  'pnpm': 'https://pnpm.js.org/en/installation',
+  'pnpm': 'https://pnpm.io/installation',
   'yarn': 'https://classic.yarnpkg.com/en/docs/install',
   'yarn@berry': 'https://yarnpkg.com/getting-started/install',
   'npm': 'https://www.npmjs.com/get-npm',
+  'prompt': 'https://github.com/nberlette/n#readme'
 }
