@@ -1,6 +1,6 @@
 {
   "name": "@brlt/n",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "Nicholas Berlette <nick@berlette.com>",
   "contributors": [
@@ -70,7 +70,7 @@
     "format:check": "pnpm format:base --check",
     "format": "pnpm format:base --write",
     "test": "vitest",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist bin",
     "clean:all": "rimraf dist bin node_modules",
     "?ni": "pnpm install",
     "ni": "esno src/ni.ts",
