@@ -82,4 +82,6 @@ dist
 _storage.json
 
 # System files
-.DS_Storebin
+.DS_Store
+
+bin

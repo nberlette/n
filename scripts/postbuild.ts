@@ -30,7 +30,7 @@ async function main(): Promise<void> {
       debug && timeLog('build', `${binContent.length}B -> ./${bin[cmd]}`)
 
       // pkg.bin
-      newPkg.bin = {}
+      newPkg.bin = newPkg.bin || {}
       newPkg.bin[cmd] = bin[cmd]
       debug && timeLog('build', `${cmd} ~> pkg.bin`)
 

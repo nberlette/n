@@ -27,7 +27,75 @@
   },
   "files": [
     "dist",
-    "bin"
+    "bin",
+    "bin/nci.js",
+    "./dist/nci.d.ts",
+    "./dist/nci.mjs",
+    "./dist/nci.js",
+    "bin/fs.js",
+    "./dist/fs.d.ts",
+    "./dist/fs.mjs",
+    "./dist/fs.js",
+    "bin/nex.js",
+    "./dist/nex.d.ts",
+    "./dist/nex.mjs",
+    "./dist/nex.js",
+    "bin/nb.js",
+    "./dist/nb.d.ts",
+    "./dist/nb.mjs",
+    "./dist/nb.js",
+    "bin/nh.js",
+    "./dist/nh.d.ts",
+    "./dist/nh.mjs",
+    "./dist/nh.js",
+    "bin/nls.js",
+    "./dist/nls.d.ts",
+    "./dist/nls.mjs",
+    "./dist/nls.js",
+    "bin/no.js",
+    "./dist/no.d.ts",
+    "./dist/no.mjs",
+    "./dist/no.js",
+    "bin/np.js",
+    "./dist/np.d.ts",
+    "./dist/np.mjs",
+    "./dist/np.js",
+    "bin/nr.js",
+    "./dist/nr.d.ts",
+    "./dist/nr.mjs",
+    "./dist/nr.js",
+    "bin/nl.js",
+    "./dist/nl.d.ts",
+    "./dist/nl.mjs",
+    "./dist/nl.js",
+    "bin/nun.js",
+    "./dist/nun.d.ts",
+    "./dist/nun.mjs",
+    "./dist/nun.js",
+    "bin/nu.js",
+    "./dist/nu.d.ts",
+    "./dist/nu.mjs",
+    "./dist/nu.js",
+    "bin/nt.js",
+    "./dist/nt.d.ts",
+    "./dist/nt.mjs",
+    "./dist/nt.js",
+    "bin/nv.js",
+    "./dist/nv.d.ts",
+    "./dist/nv.mjs",
+    "./dist/nv.js",
+    "bin/ni.js",
+    "./dist/ni.d.ts",
+    "./dist/ni.mjs",
+    "./dist/ni.js",
+    "bin/nd.js",
+    "./dist/nd.d.ts",
+    "./dist/nd.mjs",
+    "./dist/nd.js",
+    "bin/na.js",
+    "./dist/na.d.ts",
+    "./dist/na.mjs",
+    "./dist/na.js"
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -39,9 +107,96 @@
       "require": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./nci": {
+      "types": "./dist/nci.d.ts",
+      "import": "./dist/nci.mjs",
+      "require": "./dist/nci.js"
+    },
+    "./fs": {
+      "types": "./dist/fs.d.ts",
+      "import": "./dist/fs.mjs",
+      "require": "./dist/fs.js"
+    },
+    "./nex": {
+      "types": "./dist/nex.d.ts",
+      "import": "./dist/nex.mjs",
+      "require": "./dist/nex.js"
+    },
+    "./nb": {
+      "types": "./dist/nb.d.ts",
+      "import": "./dist/nb.mjs",
+      "require": "./dist/nb.js"
+    },
+    "./nh": {
+      "types": "./dist/nh.d.ts",
+      "import": "./dist/nh.mjs",
+      "require": "./dist/nh.js"
+    },
+    "./nls": {
+      "types": "./dist/nls.d.ts",
+      "import": "./dist/nls.mjs",
+      "require": "./dist/nls.js"
+    },
+    "./no": {
+      "types": "./dist/no.d.ts",
+      "import": "./dist/no.mjs",
+      "require": "./dist/no.js"
+    },
+    "./np": {
+      "types": "./dist/np.d.ts",
+      "import": "./dist/np.mjs",
+      "require": "./dist/np.js"
+    },
+    "./nr": {
+      "types": "./dist/nr.d.ts",
+      "import": "./dist/nr.mjs",
+      "require": "./dist/nr.js"
+    },
+    "./nl": {
+      "types": "./dist/nl.d.ts",
+      "import": "./dist/nl.mjs",
+      "require": "./dist/nl.js"
+    },
+    "./nun": {
+      "types": "./dist/nun.d.ts",
+      "import": "./dist/nun.mjs",
+      "require": "./dist/nun.js"
+    },
+    "./nu": {
+      "types": "./dist/nu.d.ts",
+      "import": "./dist/nu.mjs",
+      "require": "./dist/nu.js"
+    },
+    "./nt": {
+      "types": "./dist/nt.d.ts",
+      "import": "./dist/nt.mjs",
+      "require": "./dist/nt.js"
+    },
+    "./nv": {
+      "types": "./dist/nv.d.ts",
+      "import": "./dist/nv.mjs",
+      "require": "./dist/nv.js"
+    },
+    "./ni": {
+      "types": "./dist/ni.d.ts",
+      "import": "./dist/ni.mjs",
+      "require": "./dist/ni.js"
+    },
+    "./nd": {
+      "types": "./dist/nd.d.ts",
+      "import": "./dist/nd.mjs",
+      "require": "./dist/nd.js"
+    },
+    "./na": {
+      "types": "./dist/na.d.ts",
+      "import": "./dist/na.mjs",
+      "require": "./dist/na.js"
+    }
   },
-  "bin": {},
+  "bin": {
+    "na": "bin/na.js"
+  },
   "tsup": {
     "entry": [
       "./src/index.ts",
