@@ -18,7 +18,7 @@ async function main(): Promise<void> {
 
   const files = p<string>(await readdir(resolve(__dirname, '../src')), { concurrency: 5 })
 
-  await files.filter(f => !f.endsWith('.d.ts') && f.endsWith('.ts') && f.replace('.ts', '').length < 4)
+  await files.filter(f => f.startsWith('n') && !f.endsWith('.d.ts') && f.replace('.ts', '').length < 4)
     .map<Promise<any>>(async (file: string): Promise<any> => {
       const cmd = basename(file, '.ts')
 
