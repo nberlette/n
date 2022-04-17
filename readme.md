@@ -1,28 +1,74 @@
-# ni
+<div align=center>
 
-~~*`npm i` in a yarn project, again? F\*\*k!*~~
+# `@brlt/n`
 
-**ni** - use the right package manager
-
-<br>
-
-<pre>
-npm i -g <b>@antfu/ni</b>
-
-<b>ni</b>
-</pre>
-
-<a href='https://docs.npmjs.com/cli/v6/commands/npm'>npm</a> · <a href='https://yarnpkg.com'>yarn</a> · <a href='https://pnpm.js.org/en/'>pnpm</a>
-
+##### An extended fork of **`@antfu/ni`** - _"use the right package manager"_
 
 <br>
 
+### [**`pnpm`**](https://pnpm.io)  ·  [**`yarn`**](https://yarnpkg.com)  ·  [**`npm`**](https://docs.npmjs.com/cli/v6/commands/npm)
+
+<br>
+
+```bash
+pnpm add -g @brlt/n
+```
+
+```bash
+yarn global add @brlt/n
+```
+
+```bash
+npm i -g @brlt/n
+```
+
+</div><br>
+
+This package expands upon the original `@antfu/ni` by Anthony Fu by adding several new commands, but also renaming a couple to eliminate some conflicts I encountered.
+
+For example, I had some trouble with [Nx workspaces](https://nx.dev) for monorepo projects, since `nx` was occupied. So `nx` was renamed to `nex`.
+
+This is very much a work in progress. I haven't had time to add any tests for the updated commands yet, and I'm sure some of them are partially (maybe even completely) broken. Please contribute! PRs welcome!
+
+<br>
+
+## How does it work?
+
+**ni** assumes that you work with lockfiles (and you should). See the list of commands.
+
+Before it runs, it will detect your `yarn.lock` / `pnpm-lock.yaml` / `package-lock.json` to know current package manager (or `packageManager` field in your packages.json), and runs the corresponding commands.
+
+<br>
+
+## Config
+
+```ini
+; ~/.nirc
+
+; fallback when no lock found
+defaultAgent=npm # default "prompt"
+
+; for global installs
+globalAgent=npm
+```
+
+```bash
+# ~/.bashrc
+
+# custom configuration file path
+export NI_CONFIG_FILE="$HOME/.config/ni/nirc"
+```
+
+<br>
+
+## Commands
+
+<br>
 
 ### `ni` - install
 
 ```bash
 ni
-
 # npm install
 # yarn install
 # pnpm install
@@ -30,10 +76,6 @@ ni
 
 ```bash
 ni axios
-
-# npm i axios
-# yarn add axios
-# pnpm add axios
 ```
 
 ```bash
@@ -45,7 +87,7 @@ ni @types/node -D
 ```
 
 ```bash
-ni --frozen
+ni --frozen # or nci
 
 # npm ci
 # yarn install --frozen-lockfile
@@ -62,17 +104,30 @@ ni -g iroiro
 # this uses default agent, regardless your current working directory
 ```
 
+#### Change Directory
+
+```bash
+ni -C packages/foo vite
+nr -C playground dev
+```
+
+<br>
+
+### `nci` - clean install
+
+```bash
+nci
+
+# npm ci
+# yarn install --frozen-lockfile
+# pnpm install --frozen-lockfile
+```
+
+> If the corresponding node manager is not present, this command will install it globally.
+
 <br>
 
 ### `nr` - run
-
-```bash
-nr dev --port=3000
-
-# npm run dev -- --port=3000
-# yarn run dev --port=3000
-# pnpm run dev -- --port=3000
-```
 
 ```bash
 nr
@@ -87,12 +142,21 @@ nr -
 # rerun the last command
 ```
 
+```bash
+nr dev --port=3000
+
+# npm run dev -- --port=3000
+# yarn run dev --port=3000
+# pnpm run dev -- --port=3000
+```
 <br>
 
-### `nx` - execute
+### ~~`nx`~~ `nex` - execute
+
+> Renamed to `nex` to eliminate conflict with [Nx monorepos](https://nx.dev)
 
 ```bash
-nx jest
+nex jest
 
 # npx jest
 # yarn dlx jest
@@ -149,52 +213,139 @@ nun -g eslint
 
 <br>
 
-### `nci` - clean install
+### `nl` - link
 
 ```bash
-nci
+nl next
 
-# npm ci
-# yarn install --frozen-lockfile
-# pnpm install --frozen-lockfile
-```
-
-if the corresponding node manager is not present, this command will install it globally along the way.
-
-<br>
-
-### Change Directory
-
-```bash
-ni -C packages/foo vite
-nr -C playground dev
+# npm link next
+# yarn link next
+# pnpm link next
 ```
 
 <br>
 
-### Config
+### `nls` - list, or `ls`
 
-```ini
-; ~/.nirc
+```bash
+nls
 
-; fallback when no lock found
-defaultAgent=npm # default "prompt"
-
-; for global installs
-globalAgent=npm
+# npm list # yarn list # pnpm list
 ```
 
 ```bash
-# ~/.bashrc
-
-# custom configuration file path
-export NI_CONFIG_FILE="$HOME/.config/ni/nirc"
+nls -g
+# npm list --global
+# yarn global list
+# pnpm -g list
 ```
 
 <br>
 
-### How?
+### `nb` - bin
 
-**ni** assumes that you work with lockfiles (and you should)
+```bash
+nb
 
-Before it runs, it will detect your `yarn.lock` / `pnpm-lock.yaml` / `package-lock.json` to know current package manager (or `packageManager` field in your packages.json), and runs the corresponding commands.
+# npm bin
+# yarn bin
+# pnpm bin
+```
+
+```bash
+nb -g
+
+# npm bin --global
+# yarn global bin
+# pnpm -g bin
+```
+
+<br>
+
+### `nh` - help
+
+```bash
+nh
+
+# npm help # yarn help # pnpm help
+```
+
+```bash
+nh version
+
+# npm help version
+# yarn help version
+# pnpm help version
+```
+
+<br>
+
+### `nv` - version
+
+```bash
+nv
+
+# npm version
+# yarn version
+# pnpm version
+```
+
+<br>
+
+### `np` - publish
+
+```bash
+np
+
+# npm publish # yarn publish # pnpm publish
+```
+
+```bash
+np --registry=https://npm.pkg.github.com
+```
+
+<br>
+
+### `na` - audit
+
+```bash
+na
+
+# npm audit # yarn audit # pnpm audit
+```
+
+<br>
+
+### `no` - outdated
+
+```bash
+no
+
+# npm outdated
+# yarn outdated
+# pnpm outdated
+```
+
+```bash
+no --long
+
+# npm outdated --long
+# yarn outdated --long
+# pnpm outdated --long
+```
+
+<br>
+
+### `nt` - test
+
+```bash
+nt
+
+# npm test
+# yarn test
+# pnpm test
+```
+
+---
+
+[MIT](https://mit-license.org)
