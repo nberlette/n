@@ -9,6 +9,7 @@ specifiers:
   '@types/prompts': ^2.0.14
   '@types/which': ^2.0.1
   eslint: ^8.13.0
+  esm: ^3.2.25
   esno: ^0.14.1
   execa: ^6.1.0
   find-up: ^6.3.0
@@ -19,6 +20,7 @@ specifiers:
   prompts: ^2.4.2
   rimraf: ^3.0.2
   terminal-link: ^3.0.0
+  tsm: ^2.2.1
   tsup: ^5.12.5
   typescript: ^4.6.3
   vitest: ^0.9.3
@@ -34,6 +36,7 @@ devDependencies:
   '@types/prompts': 2.0.14
   '@types/which': 2.0.1
   eslint: 8.13.0
+  esm: 3.2.25
   esno: 0.14.1
   execa: 6.1.0
   find-up: 6.3.0
@@ -44,6 +47,7 @@ devDependencies:
   prompts: 2.4.2
   rimraf: 3.0.2
   terminal-link: 3.0.0
+  tsm: 2.2.1
   tsup: 5.12.5_typescript@4.6.3
   typescript: 4.6.3
   vitest: 0.9.3
@@ -1298,6 +1302,11 @@ packages:
       v8-compile-cache: 2.3.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /esm/3.2.25:
+    resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
+    engines: {node: '>=6'}
     dev: true
 
   /esno/0.14.1:
@@ -2807,6 +2816,14 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
+    dev: true
+
+  /tsm/2.2.1:
+    resolution: {integrity: sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.14.36
     dev: true
 
   /tsup/5.12.5_typescript@4.6.3:

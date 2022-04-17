@@ -1,13 +1,14 @@
-import {p} from "@antfu/utils";
-import {existsSync as exists} from "fs";
-import {mkdir, readdir, writeFile} from "fs/promises";
-import {basename, resolve} from "path";
-import pkg from "../package.json";
+import { p } from "@antfu/utils"
+import { existsSync as exists, mkdir, readdir, readJson, writeFile, writeJson } from "fs-extra"
+import { basename, resolve } from "path"
+// import pkg from "../package.json"
 
 const debug: boolean = true // (process?.env?.NODE_ENV === 'development')
 const { time, timeLog, timeEnd } = console
 
 async function main(): Promise<void> {
+  const pkg = await readJson(resolve(__dirname, '../package.json')).catch(() => ({}))
+
   debug && time('build')
   const newPkg: Record<string, any> = Object.assign({}, pkg)
   const bin: Record<string, string> = {}
@@ -45,12 +46,17 @@ async function main(): Promise<void> {
       newPkg.files = [...new Set([...newPkg.files, ...files])]
       debug && timeLog('build', `${cmd} ~> pkg.files`)
 
+      // move file from dist/cmd to dist/
+      // await $`mv -f ${resolve(__dirname, '../dist/cmd')}/* ${resolve(__dirname, '../dist')}`
+      // // remove empty dist/cmd folder
+      // await $`rm -rf ${resolve(__dirname, '../dist/cmd')}`
+
       // return file paths Object
       return ({ bin: bin[cmd], ...exports })
     })
     .then(async () => {
       const newPkgJson = JSON.stringify(newPkg, null, 2)
-      await writeFile(resolve(__dirname, '../package.json'), newPkgJson, 'utf8')
+      await writeJson(resolve(__dirname, '../package.json'), newPkg, { spaces: 2 })
       if (debug) {
         timeLog('build', `${newPkgJson.length}B -> to package.json`)
         timeEnd('build')

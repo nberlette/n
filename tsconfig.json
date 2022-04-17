@@ -17,11 +17,7 @@
       "@/*": ["./src/*.d.ts", "./src/*.ts"]
     },
     "rootDir": ".",
-    "rootDirs": ["src", "src/cmd", "test"],
-    "outDir": "dist",
-    "declarationDir": "dist",
-    "declaration": true
   },
-  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
   "exclude": ["dist", "node_modules", "bin"]
 }
