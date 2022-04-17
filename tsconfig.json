@@ -1,26 +1,27 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2020",
     "module": "esnext",
-    "lib": ["esnext"],
+    "lib": ["esnext", "DOM"],
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "strict": true,
+    "strict": false,
     "strictNullChecks": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "~": ["./src/index.ts"],
-      "@": ["./src/index.ts"],
-      "~/*": ["./src/*.ts"],
-      "@/*": ["./src/*.ts"]
+      "~/*": ["./src/*.d.ts", "./src/*.ts"],
+      "@/*": ["./src/*.d.ts", "./src/*.ts"]
     },
     "rootDir": ".",
     "rootDirs": ["src", "src/cmd", "test"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "declarationDir": "dist",
+    "declaration": true
   },
-  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx"],
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx"],
   "exclude": ["dist", "node_modules", "bin"]
 }
