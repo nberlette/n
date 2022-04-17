@@ -44,7 +44,7 @@
   "tsup": {
     "entry": [
       "./src/index.ts",
-      "./src/cmd/*.ts"
+      "./src/n*.ts"
     ],
     "platform": "node",
     "outDir": "dist",
@@ -100,6 +100,7 @@
     "@types/prompts": "^2.0.14",
     "@types/which": "^2.0.1",
     "eslint": "^8.13.0",
+    "esm": "^3.2.25",
     "esno": "^0.14.1",
     "execa": "^6.1.0",
     "find-up": "^6.3.0",
@@ -110,6 +111,7 @@
     "prompts": "^2.4.2",
     "rimraf": "^3.0.2",
     "terminal-link": "^3.0.0",
+    "tsm": "^2.2.1",
     "tsup": "^5.12.5",
     "typescript": "^4.6.3",
     "vitest": "^0.9.3",
