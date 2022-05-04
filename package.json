@@ -7,12 +7,12 @@
     "Anthony Fu <anthonyfu117@hotmail.com>",
     "Nicholas Berlette <nick@berlette.com>"
   ],
-  "bugs": "https://github.com/brlt/n/issues",
-  "homepage": "https://github.com/brlt/n#readme",
-  "readme": "https://github.com/brlt/n#readme",
+  "bugs": "https://github.com/nberlette/n/issues",
+  "homepage": "https://github.com/nberlette/n#readme",
+  "readme": "https://github.com/nberlette/n#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brlt/n.git"
+    "url": "git+https://github.com/nberlette/n.git"
   },
   "description": "Use the right package manager",
   "keywords": [
@@ -21,81 +21,13 @@
     "npm",
     "cli"
   ],
-  "packageManager": "pnpm@6.23.8",
+  "packageManager": "pnpm@7.0.0",
   "publishConfig": {
     "access": "public"
   },
   "files": [
     "dist",
-    "bin",
-    "bin/nci.js",
-    "./dist/nci.d.ts",
-    "./dist/nci.mjs",
-    "./dist/nci.js",
-    "bin/fs.js",
-    "./dist/fs.d.ts",
-    "./dist/fs.mjs",
-    "./dist/fs.js",
-    "bin/nex.js",
-    "./dist/nex.d.ts",
-    "./dist/nex.mjs",
-    "./dist/nex.js",
-    "bin/nb.js",
-    "./dist/nb.d.ts",
-    "./dist/nb.mjs",
-    "./dist/nb.js",
-    "bin/nh.js",
-    "./dist/nh.d.ts",
-    "./dist/nh.mjs",
-    "./dist/nh.js",
-    "bin/nls.js",
-    "./dist/nls.d.ts",
-    "./dist/nls.mjs",
-    "./dist/nls.js",
-    "bin/no.js",
-    "./dist/no.d.ts",
-    "./dist/no.mjs",
-    "./dist/no.js",
-    "bin/np.js",
-    "./dist/np.d.ts",
-    "./dist/np.mjs",
-    "./dist/np.js",
-    "bin/nr.js",
-    "./dist/nr.d.ts",
-    "./dist/nr.mjs",
-    "./dist/nr.js",
-    "bin/nl.js",
-    "./dist/nl.d.ts",
-    "./dist/nl.mjs",
-    "./dist/nl.js",
-    "bin/nun.js",
-    "./dist/nun.d.ts",
-    "./dist/nun.mjs",
-    "./dist/nun.js",
-    "bin/nu.js",
-    "./dist/nu.d.ts",
-    "./dist/nu.mjs",
-    "./dist/nu.js",
-    "bin/nt.js",
-    "./dist/nt.d.ts",
-    "./dist/nt.mjs",
-    "./dist/nt.js",
-    "bin/nv.js",
-    "./dist/nv.d.ts",
-    "./dist/nv.mjs",
-    "./dist/nv.js",
-    "bin/ni.js",
-    "./dist/ni.d.ts",
-    "./dist/ni.mjs",
-    "./dist/ni.js",
-    "bin/nd.js",
-    "./dist/nd.d.ts",
-    "./dist/nd.mjs",
-    "./dist/nd.js",
-    "bin/na.js",
-    "./dist/na.d.ts",
-    "./dist/na.mjs",
-    "./dist/na.js"
+    "bin"
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -109,94 +41,72 @@
     },
     "./package.json": "./package.json",
     "./nci": {
-      "types": "./dist/nci.d.ts",
       "import": "./dist/nci.mjs",
       "require": "./dist/nci.js"
     },
-    "./fs": {
-      "types": "./dist/fs.d.ts",
-      "import": "./dist/fs.mjs",
-      "require": "./dist/fs.js"
-    },
     "./nex": {
-      "types": "./dist/nex.d.ts",
       "import": "./dist/nex.mjs",
       "require": "./dist/nex.js"
     },
     "./nb": {
-      "types": "./dist/nb.d.ts",
       "import": "./dist/nb.mjs",
       "require": "./dist/nb.js"
     },
     "./nh": {
-      "types": "./dist/nh.d.ts",
       "import": "./dist/nh.mjs",
       "require": "./dist/nh.js"
     },
     "./nls": {
-      "types": "./dist/nls.d.ts",
       "import": "./dist/nls.mjs",
       "require": "./dist/nls.js"
     },
     "./no": {
-      "types": "./dist/no.d.ts",
       "import": "./dist/no.mjs",
       "require": "./dist/no.js"
     },
     "./np": {
-      "types": "./dist/np.d.ts",
       "import": "./dist/np.mjs",
       "require": "./dist/np.js"
     },
     "./nr": {
-      "types": "./dist/nr.d.ts",
       "import": "./dist/nr.mjs",
       "require": "./dist/nr.js"
     },
     "./nl": {
-      "types": "./dist/nl.d.ts",
       "import": "./dist/nl.mjs",
       "require": "./dist/nl.js"
     },
     "./nun": {
-      "types": "./dist/nun.d.ts",
       "import": "./dist/nun.mjs",
       "require": "./dist/nun.js"
     },
     "./nu": {
-      "types": "./dist/nu.d.ts",
       "import": "./dist/nu.mjs",
       "require": "./dist/nu.js"
     },
     "./nt": {
-      "types": "./dist/nt.d.ts",
       "import": "./dist/nt.mjs",
       "require": "./dist/nt.js"
     },
     "./nv": {
-      "types": "./dist/nv.d.ts",
       "import": "./dist/nv.mjs",
       "require": "./dist/nv.js"
     },
     "./ni": {
-      "types": "./dist/ni.d.ts",
       "import": "./dist/ni.mjs",
       "require": "./dist/ni.js"
     },
     "./nd": {
-      "types": "./dist/nd.d.ts",
       "import": "./dist/nd.mjs",
       "require": "./dist/nd.js"
     },
     "./na": {
-      "types": "./dist/na.d.ts",
       "import": "./dist/na.mjs",
       "require": "./dist/na.js"
     }
   },
   "bin": {
     "na": "bin/na.js",
-    "fs": "bin/fs.js",
     "nd": "bin/nd.js",
     "nex": "bin/nex.js",
     "nci": "bin/nci.js",
@@ -216,51 +126,76 @@
   "tsup": {
     "entry": [
       "./src/index.ts",
-      "./src/n*.ts"
+      "./src/n{a,b,ci,d,ex,h,i,l,ls,p,o,r,t,v,u,un}.ts"
     ],
     "platform": "node",
     "outDir": "dist",
     "format": [
-      "cjs",
       "esm"
     ],
-    "onSuccess": "esno scripts/postbuild.ts",
+    "onSuccess": "",
     "dts": true,
-    "sourcemap": true,
+    "sourcemap": false,
     "minify": true,
     "clean": true
   },
   "scripts": {
+    "info": "npm-scripts-info",
     "prepublishOnly": "pnpm clean && pnpm build",
     "watch": "pnpm build -- --watch",
-    "build": "tsup",
+    "?watch": "echo 'Watches source files and rebuilds package when changes are detected.'",
+    "build": "tsup && esno scripts/postbuild.ts",
+    "?build": "echo 'Builds the package and all binaries in production mode'",
+    "dev": "pnpm watch",
     "release": "pnpx bumpp --commit '📦 v%s' --push --tag && pnpm publish --no-git-checks",
+    "?release": "echo 'Bump version, commits/tags/push files to git, and publish to NPM.'",
     "lint": "eslint --ignore-path=.gitignore \"**/*.ts\"",
+    "?lint": "echo 'Check all source files for syntax errors.'",
     "lint:fix": "pnpm lint -- --fix",
+    "?lint:fix": "echo 'Attempts to automatically fix syntax errors in source files.'",
     "format:base": "prettier --ignore-path=.gitignore --plugin-search-dir=. '**/*.ts'",
-    "format:check": "pnpm format:base --check",
-    "format": "pnpm format:base --write",
+    "format:check": "pnpm format:base -c",
+    "?format:check": "echo 'Checks all source files for conformance with code style.'",
+    "format": "pnpm format:base -w",
+    "?format": "echo 'Formats all source files for conformance with code style.'",
     "test": "vitest",
+    "?test": "echo 'Runs a test suite to ensure proper code coverage.'",
     "clean": "rimraf dist bin",
+    "?clean": "echo 'Remove artifacts from the build process.'",
     "clean:all": "rimraf dist bin node_modules",
-    "?ni": "pnpm install",
+    "?clean:all": "echo 'Removes all dependency files and build artifacts.'",
     "ni": "esno src/ni.ts",
+    "?ni": "echo 'Runs \"install\" for the appropriate package manager.'",
     "nci": "esno src/nci.ts",
+    "?nci": "echo 'Runs \"install --frozen-lockfile\" for the appropriate package manager.'",
     "nr": "esno src/nr.ts",
+    "?nr": "echo 'Executes a script from the nearest package.json file.'",
     "nex": "esno src/nex.ts",
+    "?nex": "echo 'Executes a remote package binary without installing any dependencies.'",
     "nun": "esno src/nun.ts",
-    "dev": "esno src/ni.ts",
+    "?nun": "echo 'Uninstalls a given dependency and removes it from package.json'",
     "nu": "esno src/nu.ts",
+    "?nu": "echo 'Update dependencies.'",
     "no": "esno src/no.ts",
+    "?no": "echo 'Check for outdated dependencies'",
     "nv": "esno src/nv.ts",
+    "?nv": "echo 'Get all dependencies versions, or modify the root package version.'",
     "nd": "esno src/nd.ts",
+    "?nd": "echo 'Prints diff patches of files for packages published to npm registry.'",
     "nh": "esno src/nh.ts",
+    "?nh": "echo 'Get help on npm, pnpm, or yarn.'",
     "na": "esno src/na.ts",
+    "?na": "echo 'Audit dependencies for security vulnerabilities.'",
     "nl": "esno src/nl.ts",
+    "?nl": "echo 'Link dependencies between different locations.'",
     "nls": "esno src/nls.ts",
+    "?nls": "echo 'List install packages / dependencies'",
     "nt": "esno src/nt.ts",
+    "?nt": "echo 'Run a test script to ensure code coverage.'",
     "np": "esno src/np.ts",
-    "nb": "esno src/nb.ts"
+    "?np": "echo 'Publish a package to the npm registry.'",
+    "nb": "esno src/nb.ts",
+    "?nb": "echo 'Determine a package binary path.'"
   },
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.20.3",
@@ -278,7 +213,8 @@
     "fs-extra": "^10.1.0",
     "fsxx": "^0.0.5",
     "ini": "^3.0.0",
-    "pnpm": "^6.32.8",
+    "npm-scripts-info": "^0.3.9",
+    "pnpm": "^7.0.0",
     "prompts": "^2.4.2",
     "rimraf": "^3.0.2",
     "terminal-link": "^3.0.0",
