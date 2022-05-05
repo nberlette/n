@@ -1,12 +1,16 @@
-import { execaCommand } from 'execa'
-import { findUp } from 'find-up'
-import { existsSync, readJson } from 'fs-extra'
+import * as _execa from 'execa'
+import * as _findup from 'find-up'
+import _fs from 'fs-extra'
 import path from 'path'
 import prompts from 'prompts'
 import terminalLink from 'terminal-link'
 import type { Agent } from '~/agents'
 import { AGENTS, INSTALL_PAGE, LOCKS } from '~/agents'
 import { cmdExists } from '~/utils'
+
+const { execaCommand } = _execa
+const { findUp } = _findup
+const { existsSync, readJson } = _fs
 
 export interface DetectOptions {
   autoInstall?: boolean

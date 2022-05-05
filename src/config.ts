@@ -1,10 +1,11 @@
-import { existsSync as exists, readJson } from 'fs-extra'
+import _fs from 'fs-extra'
 import ini from 'ini'
 import path from 'path'
 import type { Agent } from '~/agents'
 import { LOCKS_PATTERN } from '~/agents'
 import { findPackageJson } from '~/fs'
 
+const { existsSync: exists, readJson } = _fs
 const home = process?.env?.[(process.platform === 'win32' ? 'USERPROFILE' : 'HOME')]
 const customRcPath = process?.env?.NI_CONFIG_FILE
 const defaultRcPath = path.join(home || '~/', '.nirc')

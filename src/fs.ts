@@ -1,6 +1,10 @@
-import { findUp } from 'find-up'
-import { existsSync, readJsonSync } from 'fs-extra'
-import { resolve } from 'path'
+import * as _findup from 'find-up'
+import _fs from 'fs-extra'
+import _path from 'path'
+
+const { findUp } = _findup
+const { resolve } = _path
+const { existsSync, readJsonSync } = _fs
 
 export function getPackageJSON(cwd = process.cwd()): any {
   const path = resolve(cwd, 'package.json')

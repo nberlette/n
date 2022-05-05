@@ -1,5 +1,5 @@
-import { execaCommand } from 'execa'
-import { resolve } from 'path'
+import * as _execa from 'execa'
+import _path from 'path'
 import prompts from 'prompts'
 import type { Agent } from '~/agents'
 import { agents } from '~/agents'
@@ -7,6 +7,9 @@ import { getDefaultAgent, getGlobalAgent } from '~/config'
 import type { DetectOptions } from '~/detect'
 import { detect } from '~/detect'
 import { getVoltaPrefix, remove } from '~/utils'
+
+const { execaCommand } = _execa
+const { resolve } = _path
 
 const DEBUG_SIGN = '?'
 

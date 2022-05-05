@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2019",
     "module": "esnext",
     "lib": ["esnext", "DOM"],
     "moduleResolution": "node",
@@ -13,8 +13,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*.d.ts", "./src/*.ts"],
-      "@/*": ["./src/*.d.ts", "./src/*.ts"]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
     },
     "rootDir": ".",
   },
