@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2017",
     "module": "esnext",
-    "lib": ["esnext", "DOM"],
+    "lib": ["esnext"],
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "strict": false,
+    "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
@@ -13,11 +13,9 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*.d.ts", "./src/*.ts"],
-      "@/*": ["./src/*.d.ts", "./src/*.ts"]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
     },
-    "rootDir": ".",
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
-  "exclude": ["dist", "node_modules", "bin"]
+    "rootDir": "."
+  }
 }

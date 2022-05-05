@@ -1,19 +1,18 @@
-import { findUp } from 'find-up'
-import { existsSync, readJsonSync } from 'fs-extra'
 import { resolve } from 'path'
+import fs from 'fs'
 
 export function getPackageJSON(cwd = process.cwd()): any {
   const path = resolve(cwd, 'package.json')
 
-  if (existsSync(path)) {
+  if (fs.existsSync(path)) {
     try {
-      return readJsonSync(path)
-    } catch (e) {
-      console.warn('Failed to parse package.json', e)
+      const raw = fs.readFileSync(path, 'utf-8')
+      const data = JSON.parse(raw)
+      return data
+    }
+    catch (e) {
+      console.warn('Failed to parse package.json')
       process.exit(0)
     }
   }
 }
-
-export const findPackageJson = (): any =>
-  (findUp('package.json').then((pkg: any) => pkg).catch(() => '') || '')

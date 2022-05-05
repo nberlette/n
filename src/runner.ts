@@ -1,12 +1,12 @@
-import { execaCommand } from 'execa'
 import { resolve } from 'path'
 import prompts from 'prompts'
-import type { Agent } from '~/agents'
-import { agents } from '~/agents'
-import { getDefaultAgent, getGlobalAgent } from '~/config'
-import type { DetectOptions } from '~/detect'
-import { detect } from '~/detect'
-import { getVoltaPrefix, remove } from '~/utils'
+import { execaCommand } from 'execa'
+import type { Agent } from './agents'
+import { agents } from './agents'
+import { getDefaultAgent, getGlobalAgent } from './config'
+import type { DetectOptions } from './detect'
+import { detect } from './detect'
+import { getVoltaPrefix, remove } from './utils'
 
 const DEBUG_SIGN = '?'
 
@@ -15,14 +15,14 @@ export interface RunnerContext {
   cwd?: string
 }
 
-export type Runner = (agent: Agent, args: string[], ctx?: RunnerContext) =>
-  Promise<string | undefined> | string | undefined
+export type Runner = (agent: Agent, args: string[], ctx?: RunnerContext) => Promise<string | undefined> | string | undefined
 
-export async function runCli(fn: Runner, options: DetectOptions = {}): Promise<void> {
+export async function runCli(fn: Runner, options: DetectOptions = {}) {
   const args = process.argv.slice(2).filter(Boolean)
   try {
     await run(fn, args, options)
-  } catch {
+  }
+  catch (error) {
     process.exit(1)
   }
 }
