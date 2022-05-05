@@ -225,23 +225,6 @@ nl next
 
 <br>
 
-### `nls` - list, or `ls`
-
-```bash
-nls
-
-# npm list # yarn list # pnpm list
-```
-
-```bash
-nls -g
-# npm list --global
-# yarn global list
-# pnpm -g list
-```
-
-<br>
-
 ### `nb` - bin
 
 ```bash
@@ -297,7 +280,9 @@ nv
 ```bash
 np
 
-# npm publish # yarn publish # pnpm publish
+# npm publish
+# yarn publish 
+# pnpm publish
 ```
 
 ```bash
@@ -306,12 +291,14 @@ np --registry=https://npm.pkg.github.com
 
 <br>
 
-### `na` - audit
+### `na` - agent alias
 
 ```bash
 na
 
-# npm audit # yarn audit # pnpm audit
+# npm
+# pnpm
+# yarn
 ```
 
 <br>

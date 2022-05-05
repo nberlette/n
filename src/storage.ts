@@ -1,6 +1,6 @@
-
-import { existsSync, readJsonSync, writeJson } from 'fs-extra'
-import { join } from 'path'
+import { existsSync, promises as fs } from 'fs'
+import { resolve } from 'path'
+import { fileURLToPath } from 'url'
 
 export interface Storage {
   lastRunCommand?: string
@@ -8,16 +8,24 @@ export interface Storage {
 
 let storage: Storage | undefined
 
-const storagePath = join(__dirname, '_storage.json')
+const storagePath = resolve(fileURLToPath(import.meta.url), '../_storage.json')
 
 export async function load(fn?: (storage: Storage) => Promise<boolean> | boolean) {
-  if (!storage && existsSync(storagePath))
-    storage = await readJsonSync(storagePath).catch(() => ({})) || {}
+  if (!storage) {
+    storage = existsSync(storagePath)
+      ? JSON.parse(await fs.readFile(storagePath, 'utf-8')) || {}
+      : {}
+  }
 
-  if (fn && (await fn(storage!)))
+  if (fn) {
+    if (await fn(storage!))
       await dump()
+  }
 
   return storage!
 }
 
-export const dump = async (): Promise<void> => storage && (await writeJson(storagePath, storage))
+export async function dump() {
+  if (storage)
+    await fs.writeFile(storagePath, JSON.stringify(storage), 'utf-8')
+}

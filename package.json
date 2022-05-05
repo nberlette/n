@@ -1,175 +1,84 @@
 {
   "name": "@brlt/n",
-  "version": "0.0.6",
+  "version": "0.1.0",
+  "packageManager": "pnpm@7.0.0",
+  "description": "Use the right package manager",
   "license": "MIT",
   "author": "Nicholas Berlette <nick@berlette.com>",
   "contributors": [
     "Anthony Fu <anthonyfu117@hotmail.com>",
     "Nicholas Berlette <nick@berlette.com>"
   ],
-  "bugs": "https://github.com/nberlette/n/issues",
-  "homepage": "https://github.com/nberlette/n#readme",
-  "readme": "https://github.com/nberlette/n#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nberlette/n.git"
   },
-  "description": "Use the right package manager",
-  "keywords": [
-    "pnpm",
-    "yarn",
-    "npm",
-    "cli"
-  ],
-  "packageManager": "pnpm@7.0.0",
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist",
-    "bin"
-  ],
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "default": "./dist/index.js"
-    },
-    "./package.json": "./package.json",
-    "./nci": {
-      "import": "./dist/nci.mjs",
-      "require": "./dist/nci.js"
-    },
-    "./nex": {
-      "import": "./dist/nex.mjs",
-      "require": "./dist/nex.js"
-    },
-    "./nb": {
-      "import": "./dist/nb.mjs",
-      "require": "./dist/nb.js"
-    },
-    "./nh": {
-      "import": "./dist/nh.mjs",
-      "require": "./dist/nh.js"
-    },
-    "./nls": {
-      "import": "./dist/nls.mjs",
-      "require": "./dist/nls.js"
-    },
-    "./no": {
-      "import": "./dist/no.mjs",
-      "require": "./dist/no.js"
-    },
-    "./np": {
-      "import": "./dist/np.mjs",
-      "require": "./dist/np.js"
-    },
-    "./nr": {
-      "import": "./dist/nr.mjs",
-      "require": "./dist/nr.js"
-    },
-    "./nl": {
-      "import": "./dist/nl.mjs",
-      "require": "./dist/nl.js"
-    },
-    "./nun": {
-      "import": "./dist/nun.mjs",
-      "require": "./dist/nun.js"
-    },
-    "./nu": {
-      "import": "./dist/nu.mjs",
-      "require": "./dist/nu.js"
-    },
-    "./nt": {
-      "import": "./dist/nt.mjs",
-      "require": "./dist/nt.js"
-    },
-    "./nv": {
-      "import": "./dist/nv.mjs",
-      "require": "./dist/nv.js"
-    },
-    "./ni": {
-      "import": "./dist/ni.mjs",
-      "require": "./dist/ni.js"
-    },
-    "./nd": {
-      "import": "./dist/nd.mjs",
-      "require": "./dist/nd.js"
-    },
-    "./na": {
-      "import": "./dist/na.mjs",
-      "require": "./dist/na.js"
+      "require": "./dist/index.cjs"
     }
   },
+  "files": [
+    "dist",
+    "bin"
+  ],
   "bin": {
-    "na": "bin/na.js",
-    "nd": "bin/nd.js",
-    "nex": "bin/nex.js",
-    "nci": "bin/nci.js",
-    "nl": "bin/nl.js",
-    "ni": "bin/ni.js",
-    "nls": "bin/nls.js",
-    "np": "bin/np.js",
-    "no": "bin/no.js",
-    "nr": "bin/nr.js",
-    "nt": "bin/nt.js",
-    "nv": "bin/nv.js",
-    "nu": "bin/nu.js",
-    "nb": "bin/nb.js",
-    "nh": "bin/nh.js",
-    "nun": "bin/nun.js"
+    "na": "bin/na.mjs",
+    "nd": "bin/nd.mjs",
+    "ne": "bin/ne.mjs",
+    "nci": "bin/nci.mjs",
+    "nl": "bin/nl.mjs",
+    "ni": "bin/ni.mjs",
+    "np": "bin/np.mjs",
+    "no": "bin/no.mjs",
+    "nr": "bin/nr.mjs",
+    "nt": "bin/nt.mjs",
+    "nv": "bin/nv.mjs",
+    "nu": "bin/nu.mjs",
+    "nb": "bin/nb.mjs",
+    "nh": "bin/nh.mjs",
+    "nun": "bin/nun.mjs"
   },
-  "tsup": {
-    "entry": [
-      "./src/index.ts",
-      "./src/n{a,b,ci,d,ex,h,i,l,ls,p,o,r,t,v,u,un}.ts"
-    ],
-    "platform": "node",
-    "outDir": "dist",
-    "format": [
-      "esm"
-    ],
-    "onSuccess": "",
-    "dts": true,
-    "sourcemap": false,
-    "minify": true,
-    "clean": true
+  "bugs": {
+    "url": "https://github.com/nberlette/n/issues"
   },
+  "homepage": "https://github.com/nberlette/n#readme",
   "scripts": {
     "info": "npm-scripts-info",
-    "prepublishOnly": "pnpm clean && pnpm build",
     "watch": "pnpm build -- --watch",
-    "build": "tsup && esno scripts/postbuild.ts",
-    "dev": "pnpm watch",
-    "release": "pnpx bumpp --commit '📦 v%s' --push --tag && pnpm publish --no-git-checks",
-    "lint": "eslint --ignore-path=.gitignore \"**/*.ts\"",
+    "release": "pnpm format && pnpx -q -y bumpp --commit '📦 v%s' --push --tag && pnpm publish --no-git-checks",
+    "lint": "eslint .",
     "lint:fix": "pnpm lint -- --fix",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "dev": "esno src/commands/ni.ts",
+    "build": "unbuild",
+    "stub": "unbuild --stub",
     "format:base": "prettier --ignore-path=.gitignore --plugin-search-dir=. '**/*.ts'",
     "format:check": "pnpm format:base -c",
     "format": "pnpm format:base -w",
     "test": "vitest",
-    "clean": "rimraf dist bin",
-    "clean:all": "rimraf dist bin node_modules",
-    "ni": "esno src/ni.ts",
-    "nci": "esno src/nci.ts",
-    "nr": "esno src/nr.ts",
-    "nex": "esno src/nex.ts",
-    "nun": "esno src/nun.ts",
-    "nu": "esno src/nu.ts",
-    "no": "esno src/no.ts",
-    "nv": "esno src/nv.ts",
-    "nd": "esno src/nd.ts",
-    "nh": "esno src/nh.ts",
-    "na": "esno src/na.ts",
-    "nl": "esno src/nl.ts",
-    "nls": "esno src/nls.ts",
-    "nt": "esno src/nt.ts",
-    "np": "esno src/np.ts",
-    "nb": "esno src/nb.ts"
+    "clean": "rimraf dist",
+    "clean:all": "rimraf dist node_modules",
+    "ni": "esno src/commands/ni.ts",
+    "nci": "esno src/commands/nci.ts",
+    "nr": "esno src/commands/nr.ts",
+    "ne": "esno src/commands/nex.ts",
+    "nun": "esno src/commands/nun.ts",
+    "nu": "esno src/commands/nu.ts",
+    "no": "esno src/commands/no.ts",
+    "nv": "esno src/commands/nv.ts",
+    "nd": "esno src/commands/nd.ts",
+    "nh": "esno src/commands/nh.ts",
+    "na": "esno src/commands/na.ts",
+    "nl": "esno src/commands/nl.ts",
+    "nt": "esno src/commands/nt.ts",
+    "np": "esno src/commands/np.ts",
+    "nb": "esno src/commands/nb.ts"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -185,47 +94,43 @@
     "ni": "Run \"install\" for the appropriate package manager.",
     "nci": "Run \"install --frozen-lockfile\" for the appropriate package manager.",
     "nr": "Run a script from the nearest package.json file.",
-    "nex": "Run a remote package binary without installing any dependencies.",
+    "ne": "Run a remote package binary without installing any dependencies.",
     "nun": "Uninstall a dependency and remove it from package.json",
     "nu": "Update one or more dependencies.",
     "no": "Check for local outdated dependencies. Add --global to check global dependencies.",
     "nv": "Get all dependencies versions, or modify the root package version.",
     "nd": "Print diff patches of files for packages published to npm registry.",
     "nh": "Get help on npm, pnpm, or yarn.",
-    "na": "Audit dependencies for security vulnerabilities.",
+    "na": "Agent alias for npm, pnpm, or yarn.",
     "nl": "Link dependencies between different locations.",
-    "nls": "List install packages / dependencies",
     "nt": "Run a test script to ensure code coverage.",
     "np": "Publish a package to the npm registry.",
     "nb": "Determine a package binary path."
   },
   "devDependencies": {
-    "@antfu/eslint-config-ts": "^0.23.0",
-    "@antfu/utils": "^0.5.1",
+    "@antfu/eslint-config": "^0.22.0",
     "@brlt/prettier": "^1.6.4",
     "@types/ini": "^1.3.31",
-    "@types/node": "^17.0.31",
-    "@types/prompts": "^2.0.14",
+    "@types/node": "^17.0.30",
+    "@types/prompts": "^2.4.0",
     "@types/which": "^2.0.1",
-    "esbuild": "^0.14.38",
     "eslint": "^8.14.0",
-    "esm": "^3.2.25",
     "esno": "^0.14.1",
     "execa": "^6.1.0",
+    "fast-glob": "^3.2.11",
     "find-up": "^6.3.0",
-    "fs-extra": "^10.1.0",
-    "fsxx": "^0.0.5",
     "ini": "^3.0.0",
     "npm-scripts-info": "^0.3.9",
     "pnpm": "^7.0.0",
     "prompts": "^2.4.2",
     "rimraf": "^3.0.2",
     "terminal-link": "^3.0.0",
-    "tsm": "^2.2.1",
-    "tsup": "^5.12.6",
     "typescript": "^4.6.4",
-    "vitest": "^0.10.2",
-    "which": "^2.0.2",
-    "zx": "^6.1.0"
+    "unbuild": "^0.7.4",
+    "vitest": "^0.10.0",
+    "which": "^2.0.2"
+  },
+  "eslintConfig": {
+    "extends": "@antfu"
   }
 }

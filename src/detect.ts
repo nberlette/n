@@ -1,16 +1,12 @@
-import * as _execa from 'execa'
-import * as _findup from 'find-up'
-import _fs from 'fs-extra'
+import fs from 'fs'
 import path from 'path'
-import prompts from 'prompts'
+import { execaCommand } from 'execa'
+import { findUp } from 'find-up'
 import terminalLink from 'terminal-link'
-import type { Agent } from '~/agents'
-import { AGENTS, INSTALL_PAGE, LOCKS } from '~/agents'
-import { cmdExists } from '~/utils'
-
-const { execaCommand } = _execa
-const { findUp } = _findup
-const { existsSync, readJson } = _fs
+import prompts from 'prompts'
+import type { Agent } from './agents'
+import { AGENTS, INSTALL_PAGE, LOCKS } from './agents'
+import { cmdExists } from './utils'
 
 export interface DetectOptions {
   autoInstall?: boolean
@@ -29,13 +25,15 @@ export async function detect({ autoInstall, cwd }: DetectOptions) {
     packageJsonPath = await findUp('package.json', { cwd })
 
   // read `packageManager` field in package.json
-  if (packageJsonPath && existsSync(packageJsonPath)) {
+  if (packageJsonPath && fs.existsSync(packageJsonPath)) {
     try {
-      const pkg = await readJson(packageJsonPath)
+      const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
       if (typeof pkg.packageManager === 'string') {
         const [name, version] = pkg.packageManager.split('@')
         if (name === 'yarn' && parseInt(version) > 1)
           agent = 'yarn@berry'
+        else if (name === 'pnpm' && parseInt(version) < 7)
+          agent = 'pnpm@6'
         else if (name in AGENTS)
           agent = name
         else
