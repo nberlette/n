@@ -15,6 +15,7 @@ specifiers:
   ini: ^3.0.0
   npm-scripts-info: ^0.3.9
   pnpm: ^7.0.0
+  prettier: ^2.6.2
   prompts: ^2.4.2
   rimraf: ^3.0.2
   terminal-link: ^3.0.0
@@ -38,6 +39,7 @@ devDependencies:
   ini: 3.0.0
   npm-scripts-info: 0.3.9
   pnpm: 7.0.0
+  prettier: 2.6.2
   prompts: 2.4.2
   rimraf: 3.0.2
   terminal-link: 3.0.0
@@ -3313,6 +3315,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.6.2:
+    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /pretty-bytes/6.0.0:

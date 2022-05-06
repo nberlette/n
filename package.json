@@ -122,6 +122,7 @@
     "ini": "^3.0.0",
     "npm-scripts-info": "^0.3.9",
     "pnpm": "^7.0.0",
+    "prettier": "^2.6.2",
     "prompts": "^2.4.2",
     "rimraf": "^3.0.2",
     "terminal-link": "^3.0.0",
