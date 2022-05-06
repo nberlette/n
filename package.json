@@ -1,6 +1,6 @@
 {
   "name": "@brlt/n",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@7.0.0",
   "description": "Use the right package manager",
   "license": "MIT",
@@ -51,7 +51,7 @@
   "scripts": {
     "info": "npm-scripts-info",
     "watch": "pnpm build -- --watch",
-    "release": "pnpm format && git add --all && pnpx -q -y bumpp --commit '📦 v%s' --push --tag",
+    "release": "pnpm format && git add --all && pnpx bumpp --commit '📦 v%s' --push --tag",
     "lint": "eslint .",
     "lint:fix": "pnpm lint -- --fix",
     "prepublishOnly": "pnpm clean && pnpm build",
