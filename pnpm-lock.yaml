@@ -38,7 +38,7 @@ devDependencies:
   find-up: 6.3.0
   ini: 3.0.0
   npm-scripts-info: 0.3.9
-  pnpm: 7.0.0
+  pnpm: 7.33.4
   prettier: 2.6.2
   prompts: 2.4.2
   rimraf: 3.0.2
@@ -3289,9 +3289,9 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pnpm/7.0.0:
-    resolution: {integrity: sha512-5njVSmE/Sz6coyikS6gjwoKWaxxsJ6BY6jL1aqwvnEpNUfFednbHqid3aZ42JszOFaSOz3Qipcfp4ei22G/JEg==}
-    engines: {node: '>=14.19'}
+  /pnpm/7.33.4:
+    resolution: {integrity: sha512-xEbf/tkwHpGM/GXq5U/sDSiE6ykLPho+o71PHNRWqkVLm6dJe4G/5Pg619Ow32ovekrr7pii5qtfamujB/+1bA==}
+    engines: {node: '>=14.6'}
     hasBin: true
     dev: true
 
